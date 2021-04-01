@@ -11,16 +11,11 @@ CREATE TABLE users (
 
 CREATE TABLE messages (
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  text VARCHAR(150),
+  text VARCHAR(150) NOT NULL,
   roomname VARCHAR(50),
-  user_id INT,
+  user_id INT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
-
-/* Create other tables and define schemas for them here! */
-
-
-
 
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql

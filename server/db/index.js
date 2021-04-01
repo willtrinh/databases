@@ -7,13 +7,6 @@ var connection = mysql.createConnection({
   password: '',
   database: 'chat'
 });
-connection.connect((err) => {
-  if (err) {
-    console.log('Unable to connect to database\n', err);
-    throw err;
-  } else {
-    console.log('Database connected');
-  }
-});
+connection.connect();
 
 module.exports = connection;

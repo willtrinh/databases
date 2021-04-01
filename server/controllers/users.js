@@ -2,7 +2,7 @@ var models = require('../models');
 
 module.exports = {
   get: function (req, res) {
-    models.users.getAll((err, results) => {
+    models.users.getAll(function(err, results) {
       if (err) {
         console.log(err);
       } else {
@@ -12,7 +12,7 @@ module.exports = {
   },
   post: function (req, res) {
     var params = [req.body.username];
-    models.users.create(params, (err, results) => {
+    models.users.create(params, function(err, results) {
       if (err) {
         console.log(err);
       } else {
