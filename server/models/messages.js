@@ -10,6 +10,7 @@ module.exports = {
     });
   }, // a function which produces all the messages
   create: function (reqBody, callback) {
+    console.log('messages body: ', reqBody);
     var queryString = 'INSERT INTO messages(text, user_id, roomname) \
                        VALUE (?, (SELECT id FROM users WHERE username = ? limit 1), ?)';
     db.query(queryString, reqBody, (err, results) => {

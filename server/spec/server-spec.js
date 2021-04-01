@@ -29,14 +29,12 @@ describe('Persistent Node Chat Server', function() {
 
   it('Should insert posted messages to the DB', function(done) {
     // Post the user to the chat server.
-    console.log('in users post request');
     axios.post('http://127.0.0.1:3000/classes/users', {
       username: 'Valjean'
     })
     // Post a message to the node chat server:
       .then(
         function () {
-          console.log('in messages post request');
           axios.post('http://127.0.0.1:3000/classes/messages', {
             username: 'Valjean',
             message: 'In mercy\'s name, three days is all I need.',
