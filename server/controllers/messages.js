@@ -2,23 +2,21 @@ var models = require('../models');
 
 module.exports = {
   get: function (req, res) {
-    res.statusCode = 200;
-    models.messages.getAll((err, data) => {
+    models.messages.getAll((err, results) => {
       if (err) {
         console.log(err);
       } else {
-        res.end(JSON.stringify(data));
+        res.json(results);
       }
     });
   }, // a function which handles a get request for all messages
   post: function (req, res) {
-    res.statusCode = 201;
-    // create (messages, createdAt, roomname)
-    models.messages.create(req.body.messages, null, req.body.roomname, (err) => {
+    var params = [req.body.message, req.body.username, req.body.roomname];
+    models.messages.create(params, (err, results) => {
       if (err) {
         console.log(err);
       } else {
-        res.end();
+        res.sendStatus(201);
       }
     });
   } // a function which handles posting a message to the database

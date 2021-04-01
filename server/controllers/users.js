@@ -2,22 +2,21 @@ var models = require('../models');
 
 module.exports = {
   get: function (req, res) {
-    res.statusCode = 200;
-    models.users.getAll((err, data) => {
+    models.users.getAll((err, results) => {
       if (err) {
         console.log(err);
       } else {
-        res.end(JSON.stringify(data));
+        res.json(results);
       }
     });
   },
   post: function (req, res) {
-    res.statusCode = 201;
-    models.users.create(req.body.username, (err) => {
+    var params = [req.body.username];
+    models.users.create(params, (err, results) => {
       if (err) {
         console.log(err);
       } else {
-        res.end();
+        res.sendStatus(201);
       }
     });
   }

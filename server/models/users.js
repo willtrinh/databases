@@ -3,22 +3,14 @@ var db = require('../db');
 module.exports = {
   getAll: function (callback) {
     var queryString = 'SELECT * FROM users';
-    console.log(queryString);
-    db.dbConnection.query(queryString, (err, results) => {
-      if (err) {
-        throw err;
-      } else {
-        callback(results);
-      }
+    db.query(queryString, (err, results) => {
+      callback(err, results);
     });
   },
-  create: function (username) {
-    console.log(username);
-    var queryString = `INSERT INTO users(username) VALUES ('${username}')`;
-    db.dbConnection.query(queryString, (err, results) => {
-      if (err) {
-        throw err;
-      }
+  create: function (params, callback) {
+    var queryString = 'INSERT INTO users(username) VALUES (?)';
+    db.query(queryString, params, (err, results) => {
+      callback(err, results);
     });
   }
 };
