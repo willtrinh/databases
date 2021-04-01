@@ -2,7 +2,6 @@ var models = require('../models');
 
 module.exports = {
   get: function (req, res) {
-    // statusCode
     res.statusCode = 200;
     models.users.getAll((err, data) => {
       if (err) {

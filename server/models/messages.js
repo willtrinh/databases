@@ -11,8 +11,10 @@ module.exports = {
       }
     });
   }, // a function which produces all the messages
-  create: function (message, createdAt, roomname, callback) {
-    var queryString = `INSERT INTO messages(message, createdAt, roomname) VALUES (${message}, ${createAt}, ${roomname} )`;
+  create: function (message, callback) {
+    console.log('messages.create: ', message);
+    var queryString = `INSERT INTO messages(message, createdAt, roomname) VALUES (${message.message}, ${message.username}, ${message.roomname} )`;
+    console.log('queryString: ', queryString);
     db.dbConnection.query(queryString, (err, results) => {
       if (err) {
         throw err;
@@ -22,5 +24,3 @@ module.exports = {
     });
   } // a function which can be used to insert a message into the database
 };
-
-// INSERT INTO table(column1,column2,...) values(value1, value2)
