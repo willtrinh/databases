@@ -2,7 +2,9 @@ var App = {
 
   $spinner: $('.spinner img'),
 
+  server: 'http://127.0.0.1:3000/classes/messages',
   username: 'anonymous',
+  roomname: 'lobby',
 
   initialize: function() {
     App.username = window.location.search.substr(10);
